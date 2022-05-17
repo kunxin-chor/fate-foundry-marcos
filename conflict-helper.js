@@ -1,0 +1,4 @@
+/*
+Marco to resolve rolls in conflicts between two characters
+
+*/
