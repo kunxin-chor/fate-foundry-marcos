@@ -18,9 +18,14 @@ const renderAspects = (aspects) => {
     return rows;
 }
 
+function getActor() {
+    let actorD = canvas?.tokens?.controlled[0]?.actor || game.user.character || token.actor;
+    return actorD;
+}
 
+let actor = getActor();
 // display all situational aspects 
-if (token && token.actor.data.data.situational_aspects) {
+if (actor) {
     let actor = token.actor;
     let aspects = duplicate(actor.data.data.situational_aspects);
     let content = "<h1>Situation Aspects</h1>"

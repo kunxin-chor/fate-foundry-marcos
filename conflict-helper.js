@@ -146,7 +146,7 @@ function run() {
 
         let targetList = '<ul>';
         for (let t of targets) {
-            targetList += `<li>${t.actor.data.name} <button style="width:auto;display:inline-block" data-settings='${getSettingString(t)}'>Roll Defence</button></li>`
+            targetList += `<li>${t.actor.data.name} <button class="roll-defend" style="width:auto;display:inline-block" data-settings='${getSettingString(t)}'>Roll Defence</button></li>`
         }
         targetList += '</ul>';
         return targetList;
@@ -280,9 +280,9 @@ function run() {
 
                         let rollData = await roll(actor, "Attack", skillInfo.rank + attackModifier, flavorString);
                         let total = rollData.total;
-
+                        let journal = '<div style="font-size:1em">'+ game.journal.getName("Combat: Attack").data.content + "</div>";
                         ChatMessage.create({
-                            content: "Targeting" + renderTargets(game.user.targets, weaponProperties, total)
+                            content: journal + "<div>Targeting" + renderTargets(game.user.targets, weaponProperties, total)+"</div>"
                         });
                     }
                 },
@@ -316,9 +316,9 @@ function run() {
 
                         let rollData = await roll(actor, "Overcome", skillInfo.rank + attackModifier, flavorString);
                         let total = rollData.total;
-
+                        let journal = '<div style="font-size:1em">'+ game.journal.getName("Combat: Overcome").data.content + "</div>";
                         ChatMessage.create({
-                            content: "Targeting" + renderTargets(game.user.targets, {
+                            content: journal + "Targeting" + renderTargets(game.user.targets, {
                                 'name':'No weapon',
                                 'weapon':0
                             }, total, false)
@@ -355,9 +355,9 @@ function run() {
 
                         let rollData = await roll(actor, "Overcome", skillInfo.rank + attackModifier, flavorString);
                         let total = rollData.total;
-
+                        let journal = '<div style="font-size:1em">'+ game.journal.getName("Combat: Create an Advantage").data.content + "</div>";
                         ChatMessage.create({
-                            content: "Targeting" + renderTargets(game.user.targets, {
+                            content: journal + "Targeting" + renderTargets(game.user.targets, {
                                 'name':'No weapon',
                                 'weapon':0
                             }, total, false)
