@@ -144,8 +144,17 @@ function run() {
     function getSelectedArmor() {
         let armorSelect = document.querySelector('#selected-armor');
         let selectedArmor = armorSelect.options[armorSelect.selectedIndex];
-        let properties = JSON.parse(selectedArmor.dataset.armorProperties);
-        return properties;
+        if (selectedArmor) {
+            let properties = JSON.parse(selectedArmor.dataset.armorProperties);
+            return properties;
+        } else {
+            return {
+                'name': 'No armor',
+                'armor': 0  // no armor
+            }
+        }
+
+
     }
 
     ui.notifications.notify("Process Defence Script started");
@@ -204,10 +213,21 @@ function run() {
                             let selectedSkill = getSelectedSkill();
                             let skillInfo = getSkillByName(token.actor, selectedSkill);
                             let selectedArmor = getSelectedArmor();
-                            console.log(selectedSkill, selectedArmor, skillInfo);
+
+                            let defendModifier = parseInt(document.querySelector('#defend-modifier').value);
+                            let armorModifier = parseInt(document.querySelector("#armor-modifier").value);
+
+                            if (!defendModifier) {
+                                defendModifier = 0;
+                            }
+
+                            if (!armorModifier) {
+                                armorModifier = 0;
+                            }
+
 
                             // Do the defend roll
-                            let r = new Roll(`4dF+${skillInfo.rank}`)
+                            let r = new Roll(`4dF+${skillInfo.rank + defendModifier}`)
                             let roll = await r.roll();
                             roll.dice[0].options.sfx = { id: "fate4df", result: roll.result };
                             let msg = ChatMessage.getSpeaker(token.actor)
@@ -216,40 +236,58 @@ function run() {
                             //  calculate shifts, damage, etc
                             let shifts = settings.total - roll.total;
                             let protection = parseInt(selectedArmor.armor);
-                            let damage = shifts > 0 ? shifts + parseInt(settings.selectedWeapon.weapon) : 0;
+                            let damage = shifts - defendModifier > 0 ? shifts + parseInt(settings.selectedWeapon.weapon) : 0;
                             let minDamage = 1 + parseInt(settings.selectedWeapon.weapon);
-                            let totalDamage = Math.max(damage - protection, 0);
-
-                            let extraFlavor = `<div>
-                            <p>${skillInfo.name} (rank: ${skillInfo.rank}) vs.${settings.total}</p>
-                            ${(()=>{
-                                if (shifts > 0) {
-                                    return "<h2>FAILURE!</h2>";
-                                } else if (shifts == 0) {
-                                    return "<h2>NEAR MISS!</h2>"
-                                } else {
-                                    return "<h2>SUCCESS!</h2>"
-                                }
-                            })()}
+                            let totalDamage = Math.max(damage - protection - armorModifier, 0);
+                            let extraFlavor = null;
+                            if (settings.isAttack) {
+                                extraFlavor = `<div>
+                                <p>${skillInfo.name} (rank: ${skillInfo.rank}  ${defendModifier != 0 ? `+ ${defendModifier}` : ''}) vs.${settings.total}</p>                            
+                                ${(() => {
+                                            if (shifts > 0) {
+                                                return "<h2>FAILURE!</h2>";
+                                            } else if (shifts == 0) {
+                                                return "<h2>NEAR MISS!</h2>"
+                                            } else {
+                                                return "<h2>SUCCESS!</h2>"
+                                            }
+                                        })()}
+                                <ul>
+                                    <li>Shifts from Attacker: ${shifts}</li>
+                                    <li>Weapon Damage: ${settings.selectedWeapon.weapon}</li>
+                                    ${shifts > 0 ?
+                                            `<li>Raw Damage: ${shifts} + ${settings.selectedWeapon.weapon} = ${shifts + settings.selectedWeapon.weapon}</li>` :
+                                            `<li>Raw Damage: 0 (miss!)</li>`
+                                        }                                
+                                    
+                                    <li>Armor: ${protection} ${armorModifier ? ` +  ${armorModifier} = ${protection + armorModifier}` : ''}</li>                           
+                                    <li>Best Min Damage: ${Math.max(minDamage - protection - armorModifier, 0)}</li>
+                                    <li>Total Damage: ${Math.max(totalDamage, 0)}</li>
+                                </ul>
+                                </div>`;
+                            } else {
+                                extraFlavor = `<div>
+                                 <p>${skillInfo.name} (rank: ${skillInfo.rank}  ${defendModifier != 0 ? `+ ${defendModifier}` : ''}) vs.${settings.total}</p>
+                                 ${(() => {
+                                    if (shifts > 0) {
+                                        return "<h2>FAILURE!</h2>";
+                                    } else if (shifts == 0) {
+                                        return "<h2>NEAR MISS!</h2>"
+                                    } else {
+                                        return "<h2>SUCCESS!</h2>"
+                                    }
+                                })()}
                             <ul>
                                 <li>Shifts from Attacker: ${shifts}</li>
-                                <li>Weapon Damage: ${settings.selectedWeapon.weapon}</li>
-                                ${
-                                    shifts > 0 ?
-                                    `<li>Raw Damage: ${shifts} + ${settings.selectedWeapon.weapon} = ${damage}</li>` :
-                                    `<li>Raw Damage: 0 (miss!)</li>`
-                                }
-                                
-                                <li>Armor: ${protection}</li>
-                                <li>Total Damage: ${totalDamage}</li>
-                                <li>Min Damage: ${minDamage - protection}</li>
                             </ul>
-                            </div>`;
+                                 </div>`;                       
+                            }
 
                             let chatData = await roll.toMessage({
 
                                 flavor: `<h1>Defend</h1>${game.i18n.localize("fate-core-official.RolledBy")}: ${game.user.name}<br>
-                                            ${extraFlavor}`,
+                                            ${extraFlavor}
+                                            `,
                                 speaker: msg
                             }, {
                                 create: true
