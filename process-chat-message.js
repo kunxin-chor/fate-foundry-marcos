@@ -163,18 +163,45 @@ Hooks.on('ready', () => {
 
         Hooks.on('renderChatMessage', function (message, html, data) {
 
+            html.find('button.show-action-help').click(function(){
+                game.journal.getName("Action: " + this.dataset.actionType).sheet.render(true);
+            })
 
             html.find('button.show-defend-journal').click(function (e) {
                 game.journal.getName("Combat: Defend").sheet.render(true)
+            })
+
+            html.find('span.pan-to-token').hover(function(e){
+                let tokenId = this.dataset.token;
+                let token = canvas.tokens.get(tokenId);                       
+                token._onHoverIn(e);
+           
+            },function(e){
+                let tokenId = this.dataset.token;
+                let token = canvas.tokens.get(tokenId);                       
+                token._onHoverOut(e);
+              
+            })
+
+            html.find('span.pan-to-token').click(function(e){
+                let tokenId = this.dataset.token;
+                let token = canvas.tokens.get(tokenId);                                    
+                const position = token.position
+                canvas.animatePan(position)
             })
 
             // find all buttons, add event listener
             html.find('button.roll-defend').click(function (e) {
 
                 let settings = JSON.parse(e.target.dataset.settings);
-                console.log(settings);
+         
                 let token = canvas.scene.tokens.find(t => t.data._id == settings.token);
                 console.log(token);
+                if (!token.actor.isOwner) {
+                
+                    ui.notifications.error("You cannot roll for this character");
+                    return;
+                }
 
                 new Dialog({
                     'title': 'Roll Defend action',

@@ -64,21 +64,25 @@ function run() {
 
     function getSkills(actor, filter) {
         let filtered = [];
-
+    
         for (const [skillName, value] of Object.entries(actor.data.data.skills)) {
-
-            // exclude backgrounds
-            if (skillName.startsWith("[Background")) {
-                continue;
-            }
+    
             if (!filter || filter == "*") {
                 filtered.push(value);
             } else if (filter == 'combat' && (COMBAT_SKILLS.includes(skillName) || skillName.startsWith('[Combat]'))) {
                 filtered.push(value);
-            } else if (filter == 'non-combat' && !COMBAT_SKILLS.includes(skillName) && !skillName.startsWith('[Combat]')) {
+            } else if (filter == 'non-combat' &&
+                !COMBAT_SKILLS.includes(skillName) &&
+                !skillName.startsWith('[Combat]') &&
+                !skillName.startsWith('[Background]') &&
+                !skillName.startsWith('[Domain]')){
+                filtered.push(value);
+            } else if (filter == 'background' && skillName.startsWith('[Background]')) {
+                filtered.push(value);
+            } else if (filter=="domain" && skillName.startsWith('[Domain]')) {
                 filtered.push(value);
             }
-
+    
         }
         // sort by name
         filtered.sort((a, b) => {
@@ -90,10 +94,11 @@ function run() {
                 return 0;
             }
         });
-
+    
         return filtered;
-
+    
     }
+    
 
     function renderCombatSkillSelect(actor) {
         let output = "";
@@ -146,14 +151,14 @@ function run() {
 
         let targetList = '<ul>';
         for (let t of targets) {
-            targetList += `<li>${t.actor.data.name} <button class="roll-defend" style="width:auto;display:inline-block" data-settings='${getSettingString(t)}'>Roll Defence</button></li>`
+            targetList += `<li><span class="pan-to-token" data-token="${t.data._id}">${t.actor.data.name}</span> <button class="roll-defend" style="width:auto;display:inline-block" data-settings='${getSettingString(t)}'>Roll Defence</button></li>`
         }
         targetList += '</ul>';
         return targetList;
     }
 
-    async function roll(actor, name, rank, extraFlavor = "") {
-        let r = new Roll(`4dF+${rank}`)
+    async function roll(actor, name, rank, modifier, extraFlavor = "") {
+        let r = new Roll(`4dF+${rank}+${modifier}`)
         let roll = await r.roll();
         roll.dice[0].options.sfx = { id: "fate4df", result: roll.result };
         let msg = ChatMessage.getSpeaker(actor)
@@ -278,7 +283,7 @@ function run() {
                         }
 
 
-                        let rollData = await roll(actor, "Attack", skillInfo.rank + attackModifier, flavorString);
+                        let rollData = await roll(actor, "Attack", skillInfo.rank, attackModifier, flavorString);
                         let total = rollData.total;
                         let journal = '<div style="font-size:1em">'+ game.journal.getName("Combat: Attack").data.content + "</div>";
                         ChatMessage.create({
@@ -314,7 +319,7 @@ function run() {
                             flavorString += "</ul>"
                         }
 
-                        let rollData = await roll(actor, "Overcome", skillInfo.rank + attackModifier, flavorString);
+                        let rollData = await roll(actor, "Overcome", skillInfo.rank , attackModifier, flavorString);
                         let total = rollData.total;
                         let journal = '<div style="font-size:1em">'+ game.journal.getName("Combat: Overcome").data.content + "</div>";
                         ChatMessage.create({
@@ -353,7 +358,7 @@ function run() {
                             flavorString += "</ul>"
                         }
 
-                        let rollData = await roll(actor, "Overcome", skillInfo.rank + attackModifier, flavorString);
+                        let rollData = await roll(actor, "Overcome", skillInfo.rank , attackModifier, flavorString);
                         let total = rollData.total;
                         let journal = '<div style="font-size:1em">'+ game.journal.getName("Combat: Create an Advantage").data.content + "</div>";
                         ChatMessage.create({

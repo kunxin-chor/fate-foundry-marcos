@@ -1,0 +1,227 @@
+{
+    "Compel": {
+          "name": "Compel",
+          "description": "<p>forces someone to do your bidding, with threats or authority</p>",
+          "overcome": "",
+          "caa": "",
+          "attack": "",
+          "defend": "",
+          "pc": true
+     },
+    "Consort": {
+         "name": "Consort",
+         "description": "<p><span> to build rapport with others and give a good favorable impression</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Contact": {
+         "name": "Contact",
+         "description": "<p><span> to find someone, or to see if someone exists in your social network</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Deceive": {
+     "name": "Deceive",
+     "description": "<p><span> to find someone, or to see if someone exists in your social network</span><br></p>",
+     "overcome": "",
+     "caa": "",
+     "attack": "",
+     "defend": "",
+     "pc": true
+     },
+    "Empathy": {
+         "name": "Empathy",
+         "description": "<p>being perceptive of the moods and motives of other creatures, and able to relate to them</p>",
+         "overcome": "<p><br></p>",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Endure": {
+         "name": "Endure",
+         "description": "<p><span>representing toughness, fortitude </span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Labor": {
+         "name": "Labor",
+         "description": "<p><span> to lift, push and unleash great force</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Navigate": {
+         "name": "Navigate",
+         "description": "<p><span>to travel, without getting lost</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Notice": {
+         "name": "Notice",
+         "description": "<p><span>representing situation awareness, it is your power of observation and ability to notice hidden and out of place objects</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Finesses": {
+         "name": "Finesses",
+         "description": "<p><span>this skill measures your manual dexterity and hand/eye coordination</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Prowl": {
+         "name": "Prowl",
+         "description": "<p><span>to move carefully and with grace</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Stealth": {
+         "name": "Stealth",
+         "description": "<p><span> to move without being seen and stay still without being detected.</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Study": {
+         "name": "Study",
+         "description": "<ul><li aria-level=\"1\" dir=\"ltr\"><p role=\"presentation\" dir=\"ltr\"><span>investigate a subject in details, and to recall past knowledge</span></p></li></ul>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Sway": {
+         "name": "Sway",
+         "description": "<p><span> to force someone to do your bidding with persuasion, lies or promises</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Tinker": {
+         "name": "Tinker",
+         "description": "<p><span>to craft or to mess around with existing objects</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Heal": {
+         "name": "Heal",
+         "description": "<p><span> treat injuries, render first aid</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Vault": {
+         "name": "Vault",
+         "description": "<p><span>to climb, run and jump. Getting from one spot to another in a hurry</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Resolve": {
+         "name": "Resolve",
+         "description": "<p><span>ability to control one's emotions and impulses</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "Will": {
+         "name": "Will",
+         "description": "<p><span>to focus and to concentrate</span><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },  
+    "[Combat] Fight": {
+         "name": "[Combat] Fight",
+         "description": "",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "[Combat] Tactics": {
+     "name": "[Combat] Tactics",
+     "description": "",
+     "overcome": "",
+     "caa": "",
+     "attack": "",
+     "defend": "",
+     "pc": true
+     },  
+    "[Combat] Technique": {
+         "name": "[Combat] Technique",
+         "description": "<p><br></p>",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "[Combat] Dodge": {
+         "name": "[Combat] Dodge",
+         "description": "",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "[Combat] Parry": {
+         "name": "[Combat] Parry",
+         "description": "",
+         "overcome": "",
+         "caa": "",
+         "attack": "",
+         "defend": "",
+         "pc": true
+    },
+    "[Combat] Mettle": {
+     "name": "[Combat] Mettle",
+     "description": "",
+     "overcome": "",
+     "caa": "",
+     "attack": "",
+     "defend": "",
+     "pc": true
+}
+}

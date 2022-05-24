@@ -1,0 +1,234 @@
+{
+    "ashen-crown-npc": {
+         "actorLink": false,
+         "stunts": {},
+         "tracks": {
+              "Mild Consequence": {
+                   "name": "Mild Consequence",
+                   "category": "Combat",
+                   "description": "Mild consequences don’t require immediate medical attention. They hurt, and they may present an inconvenience, but they aren’t going to force you into a lot of bed rest. On the mental side, mild consequences express things like small social gaffes or changes in your surface emotions. Examples: Black Eye, Bruised Hand, Winded, Flustered, Cranky, Temporarily Blinded.",
+                   "universal": true,
+                   "unique": true,
+                   "recovery_type": "Sticky",
+                   "aspect": {
+                        "name": "",
+                        "when_marked": true,
+                        "as_name": false
+                   },
+                   "when_marked": "When taking harm.",
+                   "recovery_conditions": "Clear it at the end of the scene, provided you get a chance to rest.",
+                   "boxes": 0,
+                   "harm_can_absorb": 2,
+                   "notes": "",
+                   "enabled": true
+              },
+              "Moderate Consequence": {
+                   "name": "Moderate Consequence",
+                   "category": "Combat",
+                   "description": "Moderate consequences represent fairly serious impairments that require dedicated effort toward recovery (including medical attention). On the mental side, they express things like damage to your reputation or emotional problems that you can’t just shrug off with an apology and a good night’s sleep. Examples: Deep Cut, First Degree Burn, Exhausted, Drunk, Terrified.",
+                   "universal": true,
+                   "unique": true,
+                   "recovery_type": "Lasting",
+                   "aspect": {
+                        "name": "",
+                        "when_marked": true,
+                        "as_name": false
+                   },
+                   "when_marked": "When taking harm.",
+                   "recovery_conditions": "Clear it at the end of the next session, provided it makes sense within the story.\n\nModerate consequences stick around for a while. Therefore, at some point you may want to change the name of the aspect to better fit what’s going on in the story. For instance, after you get some medical help, Painful Broken Leg might make more sense if you change it to Hobbling on Crutches",
+                   "boxes": 0,
+                   "harm_can_absorb": 4,
+                   "notes": "",
+                   "enabled": true
+              },
+              "Severe Consequence": {
+                   "name": "Severe Consequence",
+                   "category": "Combat",
+                   "description": "Severe consequences go straight to the emergency room (or whatever the equivalent is in your game)—they’re extremely nasty and prevent you from doing a lot of things, and will lay you out for a while. On the mental side, they express things like serious trauma or relationship-changing harm. Examples: Second-Degree Burn, Compound Fracture, Guts Hanging Out, Crippling Shame, Trauma-Induced Phobia.",
+                   "universal": true,
+                   "unique": true,
+                   "recovery_type": "Lasting",
+                   "aspect": {
+                        "name": "",
+                        "when_marked": true,
+                        "as_name": false
+                   },
+                   "when_marked": "When taking harm.",
+                   "recovery_conditions": "Clear it at the end of the scenario, provided it makes sense within the story.\n\nSevere consequences stick around for a while. Therefore, at some point you may want to change the name of the aspect to better fit what’s going on in the story. For instance, after you get some medical help, Painful Broken Leg might make more sense if you change it to Hobbling on Crutches",
+                   "boxes": 0,
+                   "harm_can_absorb": 6,
+                   "notes": "",
+                   "enabled": true
+              },
+              "Stress": {
+                   "name": "Stress",
+                   "category": "Combat",
+                   "description": "If you get hit and don’t want to be taken out, you can choose to take stress.\n\nStress represents you getting tired or annoyed, taking a superficial wound, or some other condition that goes away quickly.",
+                   "universal": true,
+                   "unique": true,
+                   "recovery_type": "Fleeting",
+                   "aspect": "No",
+                   "when_marked": "When you take a hit and check a stress box, the box absorbs a number of shifts equal to its number: one shift for Box 1, two for Box 2, or three for Box 3. You can only mark one stress box for each hit.",
+                   "recovery_conditions": "At the end of each scene, clear all of your stress boxes.",
+                   "boxes": 3,
+                   "label": "escalating",
+                   "harm_can_absorb": 0,
+                   "notes": "",
+                   "box_values": [
+                        false,
+                        false,
+                        false
+                   ],
+                   "enabled": true
+              }
+         },
+         "skills": {
+              "[Combat] Fight": {
+                   "name": "[Combat] Fight",
+                   "description": "",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true
+              },
+              "[Combat] Technique": {
+                   "name": "[Combat] Technique",
+                   "description": "<p><br></p>",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true
+              },
+              "[Combat] Tactics": {
+                   "name": "[Combat] Tactics",
+                   "description": "",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true
+              },
+              "[Combat] Dodge": {
+                   "name": "[Combat] Dodge",
+                   "description": "",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true
+              },
+              "[Combat] Parry": {
+                   "name": "[Combat] Parry",
+                   "description": "",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true
+              }, 
+              "[Combat] Mettle": {
+               "name": "[Combat] Mettle",
+               "description": "",
+               "overcome": "",
+               "caa": "",
+               "attack": "",
+               "defend": "",
+               "pc": true
+               },
+              "Careful": {
+                   "name": "Careful",
+                   "description": "A Careful action is when you pay close attention to detail and take your time to do the job right. Lining up a long-range arrow shot. Attentively standing watch. Disarming a bank’s alarm system.",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true,
+                   "rank": 0
+              },
+              "Clever": {
+                   "name": "Clever",
+                   "description": "A Clever action requires that you think fast, solve problems, or account for complex variables. Finding the weakness in an enemy swordsman’s style. Finding the weak point in a fortress wall. Fixing a computer.",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true,
+                   "rank": 0
+              },
+              "Flashy": {
+                   "name": "Flashy",
+                   "description": "A Flashy action draws attention to you; it’s full of style and panache. Delivering an inspiring speech to your army. Embarrassing your opponent in a duel. Producing a magical fireworks display.",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true,
+                   "rank": 0
+              },
+              "Forceful": {
+                   "name": "Forceful",
+                   "description": "A Forceful action isn’t subtle—it’s brute strength. Wrestling a bear. Staring down a thug. Casting a big, powerful magic spell.",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true,
+                   "rank": 0
+              },
+              "Quick": {
+                   "name": "Quick",
+                   "description": "A Quick action requires that you move quickly and with dexterity. Dodging an arrow. Getting in the first punch. Disarming a bomb as it ticks 3… 2… 1…",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true,
+                   "rank": 0
+              },
+              "Sneaky": {
+                   "name": "Sneaky",
+                   "description": "A Sneaky action is done with an emphasis on misdirection, stealth, or deceit. Talking your way out of getting arrested. Picking a pocket. Feinting in a sword fight.",
+                   "overcome": "",
+                   "caa": "",
+                   "attack": "",
+                   "defend": "",
+                   "pc": true,
+                   "rank": 0
+              }
+         },
+         "aspects": {
+              "High Concept": {
+                   "name": "High Concept",
+                   "description": "First, decide on your character’s high concept. This is a single phrase or sentence that neatly sums up your character, saying who you are, what you do, what your “deal” is. When you think about your high concept, try to think of two things: how this aspect could help you, and how it might make things harder for you. Good high concept aspects do both.\n\nExamples: Feline Captain of Cirrus Skimmer; Suncaller of the Andral Desert; Chief Field Agent of IGEMA",
+                   "value": ""
+              },
+              "Trouble": {
+                   "name": "Trouble",
+                   "description": "Next, decide on the thing that always gets you into trouble. It could be a personal weakness, or a recurring enemy, or an important obligation—anything that makes your life complicated.\n\nExamples: Steel Assassins Want Me Dead; Cast Now, Ask Questions Later; Gotta Look Out for My Little Brother",
+                   "value": ""
+              },
+              "Other Aspect 1": {
+                   "name": "Other Aspect 1",
+                   "description": "Now compose another aspect. Think of something really important or interesting about your character. Are they the strongest person in their hometown? Do they carry a mighty sword known through history? Do they talk too much? Are they filthy rich?",
+                   "value": ""
+              },
+              "Other Aspect 2": {
+                   "name": "Other Aspect 2",
+                   "description": "This aspect might describe your character’s relationship with other player characters or with an NPC. Or, like the third aspect you composed above, it might describe something especially interesting about your character.",
+                   "value": ""
+              },
+              "Other Aspect 3": {
+                   "name": "Other Aspect 3",
+                   "description": "This aspect might describe your character’s relationship with other player characters or with an NPC. Or, like the third aspect you composed above, it might describe something especially interesting about your character.",
+                   "value": ""
+              }
+         },
+         "extras": [],
+         "img": "icons/svg/mystery-man.svg",
+         "token_img": "icons/svg/mystery-man.svg",
+         "default_name": "Ashen Crown NPC",
+         "default_description": "Ashen Crown NPC"
+    }
+}
